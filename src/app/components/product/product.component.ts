@@ -15,13 +15,13 @@ export class ProductComponent implements OnInit {
 
   constructor(private productService:ProductService) { } //servisi kullanabilmek için servisi enjekte et.
 
-  ngOnInit(): void {  //yukarıda productcomponent OnInit'ten implemente ediliyor. ve component ilk açıldığında çalışacak olan kodları buraya yazıyoruz.
+  ngOnInit(): void {  //yukarıda productcomponent OnInit'ten implement ediliyor ve component ilk açıldığında çalışacak olan kodları buraya yazıyoruz.
   this.getProducts();
 }
 
   getProducts(){
     this.productService.getProducts().subscribe(response=>{  //asenkron çalışır.
-      this.products=response.data  //gelen cevap producta eşitti.
+      this.products=response.data  //gelen cevap products'a eşittir.
       this.dataLoaded=true;
     })
   }

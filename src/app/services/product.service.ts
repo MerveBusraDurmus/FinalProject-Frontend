@@ -12,7 +12,7 @@ export class ProductService {
 
   constructor(private httpClient:HttpClient) { } //constructor'ın amacı productcomponenti bellekte oluşturmaktır.Yani instance'ını oluşturmaktır.yani newlemek.
   //httpclient kullanabilmek için injection yapılması gerekir.
-  getProducts():Observable<ProductResponseModel>{  //observable yazmamızın sebebi subscribe olunabilmesidir. subscribe componentler tarafından yapılır.
+  getProducts():Observable<ProductResponseModel>{  //observable yazmamızın sebebi subscribe olunabilmesidir.Subscribe olunabilir bir ProductResponseModel dönecek.subscribe componentler tarafından yapılır.
     return this.httpClient.get<ProductResponseModel>(this.apiUrl) //gelen datayı productresponsemodel'e map edeceksin demek.Parse yapıyoruz. Datayı productResponseModel'e çeviriyoruz.
    
   }

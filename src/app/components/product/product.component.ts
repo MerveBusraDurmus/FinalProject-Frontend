@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/models/product';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-product',
@@ -6,48 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
+  
+  products:Product[] = [];
+  dataLoaded = false;
+  
 
-  product1: any = {
-    productId: 1,
-    productName: 'Bardak',
-    categoryId: 1,
-    unitPrice: 5,
-  }; //any varsa her veri tipi olabilir demektir.
-  product2: any = {
-    productId: 2,
-    productName: 'Laptop',
-    categoryId: 1,
-    unitPrice: 5,
-  };
-  product3: any = {
-    productId: 3,
-    productName: 'Mouse',
-    categoryId: 1,
-    unitPrice: 5,
-  };
-  product4: any = {
-    productId: 4,
-    productName: 'Keyboard',
-    categoryId: 1,
-    unitPrice: 5,
-  };
-  product5: any = {
-    productId: 5,
-    productName: 'Camera',
-    categoryId: 1,
-    unitPrice: 5,
-  };
+  constructor(private productService:ProductService) { } //servisi kullanabilmek için servisi enjekte et.
 
-  products = [
-    this.product1,
-    this.product2,
-    this.product3,
-    this.product4,
-    this.product5,
-  ];
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {  //yukarıda productcomponent OnInit'ten implemente ediliyor. ve component ilk açıldığında çalışacak olan kodları buraya yazıyoruz.
+  this.getProducts();
 }
+
+  getProducts(){
+    this.productService.getProducts().subscribe(response=>{  //asenkron çalışır.
+      this.products=response.data  //gelen cevap producta eşitti.
+      this.dataLoaded=true;
+    })
+  }
+} 

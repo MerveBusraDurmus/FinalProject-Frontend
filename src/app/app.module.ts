@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {HttpClientModule} from '@angular/common/http'
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,14 +13,17 @@ import { NaviComponent } from './components/navi/navi.component';
   declarations: [
   //bir module'ün bir componenti kullanabilmesi için o modulde declerasyonlarda componentlerin tanımlı olması lazım.
   //bunlarıda burada kullanabilmek için yukarıda import etmek gerekli.
+  //kendi yazdığımız module'leri buraya ekliyoruz.
     AppComponent,
     ProductComponent,
     CategoryComponent,
     NaviComponent
   ],
   imports: [
+    //kendi yazmadığımız dışarıdan aldığımızı module'leri buraya ekliyoruz.
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
